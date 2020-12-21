@@ -1,0 +1,23 @@
+name: CI
+
+on: [push]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  CI-WINDOWS-2019:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: RunTests
+      shell: bash
+      env:
+          CMAKE_COMPILER: "Visual Studio 16 2019"
+          CMAKE_ARCH: "x64"
+      run: |
+          source src/build/setup_ci.bash
+          source src/build/install_deps.bash
+          source src/build/build_test.bash
