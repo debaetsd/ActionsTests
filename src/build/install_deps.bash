@@ -9,3 +9,6 @@ fi
 if [[ ! -e $BUILD_DIR ]] ; then
     mkdir -p $BUILD_DIR
 fi
+
+source src/build/build_zlib.bash
+source src/build/build_openexr.bash
